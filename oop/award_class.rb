@@ -13,6 +13,7 @@ class AwardClass
     self.quality -= 1 if self.expires_in < 0 && self.quality > 0
   end
 
+  # for debugging purposes
   def inspect
     "#{self.class} - name:#{self.name} | expires_in:#{self.expires_in} | quality:#{self.quality}"
   end
