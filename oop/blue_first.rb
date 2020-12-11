@@ -7,16 +7,11 @@ class BlueFirst < Award
     super(name, expires_in, quality)
   end
 
-  def quack()
-    puts 'bluefirst quack'
+  def update
+    self.quality += 1 if self.quality < 50
+    self.expires_in -= 1
+    self.quality += 1 if self.expires_in < 0 && self.quality < 50
+    puts self
   end
   
 end
-
-b = Award.new("Normal Award", 100, 30)
-puts(b)
-
-c = BlueFirst.new("Blue First", 90, 40)
-puts(c.name)
-puts(c.quality)
-c.quack
