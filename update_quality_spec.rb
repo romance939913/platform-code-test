@@ -1,7 +1,8 @@
 require 'rspec'
+require 'award'
 require 'award_factory'
 
-describe 'Award#update' do
+describe 'AwardType#update' do
 
   context 'Given a single award' do
     let(:initial_expires_in) { 5 }
@@ -224,9 +225,7 @@ describe 'Award#update' do
 
     context 'when quality is updated' do
       before do
-        awards.each do |award|
-          award.update
-        end
+        Award.update_multiple_awards(awards)
       end
 
       specify { expect(awards[0].quality).to eq(9) }
