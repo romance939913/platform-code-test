@@ -7,7 +7,7 @@ class BlueStar < Award
 
   def update
     self.quality -= 2 if self.quality > 1
-    self.expires_in -= 1
+    self.decrement_days_until_expiration
     self.quality -= 2 if self.expires_in < 0 && self.quality > 1
   end
 end

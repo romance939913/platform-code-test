@@ -1,7 +1,7 @@
 require 'rspec'
 require 'award_factory'
 
-describe '#update_quality' do
+describe 'Award#update' do
 
   context 'Given a single award' do
     let(:initial_expires_in) { 5 }

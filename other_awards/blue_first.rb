@@ -6,8 +6,8 @@ class BlueFirst < Award
   end
 
   def update
-    self.quality += 1 if self.quality < 50
-    self.expires_in -= 1
+    self.increment_award_quality_by_1
+    self.decrement_days_until_expiration
     self.quality += 1 if self.expires_in < 0 && self.quality < 50
   end
 end

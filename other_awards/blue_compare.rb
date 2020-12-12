@@ -6,10 +6,10 @@ class BlueCompare < Award
   end
 
   def update
-    self.quality += 1 if self.quality < 50
+    self.increment_award_quality_by_1
     self.quality += 1 if self.quality < 50 && self.expires_in < 11
     self.quality += 1 if self.quality < 50 && self.expires_in < 6
-    self.expires_in -= 1
-    self.quality = 0 if self.expires_in < 0
+    self.decrement_days_until_expiration
+    self.set_quality_to_0_if_expired
   end
 end
