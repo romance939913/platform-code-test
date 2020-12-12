@@ -1,16 +1,16 @@
 require 'rspec'
-require 'update_quality_2'
+require 'award_factory'
 
 describe '#update_quality' do
 
   context 'Given a single award' do
     let(:initial_expires_in) { 5 }
     let(:initial_quality) { 10 }
-    let(:award) { Award.new(name, initial_expires_in, initial_quality) }
+    let (:award) { AwardFactory.for(name, initial_expires_in, initial_quality) }
 
     context 'when quality is updated' do
       before do
-        update_quality([award])
+        award.update
       end
 
       context 'given a normal award' do
@@ -217,14 +217,16 @@ describe '#update_quality' do
   context 'Given several award' do
     let(:awards) {
       [
-        Award.new('NORMAL ITEM', 5, 10),
-        Award.new('Blue First', 3, 10),
+        AwardFactory.for('NORMAL ITEM', 5, 10),
+        AwardFactory.for('Blue First', 3, 10),
       ]
     }
 
     context 'when quality is updated' do
       before do
-        update_quality(awards)
+        awards.each do |award|
+          award.update
+        end
       end
 
       specify { expect(awards[0].quality).to eq(9) }

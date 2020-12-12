@@ -1,4 +1,4 @@
-require_relative 'award.rb'
+# require_relative 'award.rb'
 
 # Once the expiration date has passed, quality score degrades twice as fast
 

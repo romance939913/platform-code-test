@@ -1,8 +1,6 @@
-require_relative "award_class"
+require_relative "../award"
 
-class BlueCompare < AwardClass
-  attr_accessor :name, :expires_in, :quality
-
+class BlueCompare < Award
   def initialize(name, expires_in, quality)
     super(name, expires_in, quality)
   end
